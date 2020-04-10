@@ -28,6 +28,7 @@ import java.util.HashMap;
 public class Solution2 {
     public int longestPalindrome(String s) {
         int[] count = new int[123];
+        // 用数组存储字符串出现的次数
         for (char c : s.toCharArray()) {
             count[c]++;
         }
@@ -36,6 +37,7 @@ public class Solution2 {
         // 如果字符出现的次数为奇数2N+1，则至少可以组成长度为2N的回文字串，通过 ans = ans + v / 2 * 2实现
         int ans = 0;
         for (int v : count) {
+            // 如果字符串出现三次，则至少可以形成长度是2的回文字串
             ans = ans + v / 2 * 2;
             // 如果字符出现的次数为奇数，那么可以取出该字符，作为回文的中心点，而且取出后，不再使用其他字符作为中心点
             if (v % 2 != 0 && ans % 2 == 0) {
